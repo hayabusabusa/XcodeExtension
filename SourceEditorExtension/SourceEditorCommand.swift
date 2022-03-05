@@ -14,7 +14,13 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         // Implement your command here, invoking the completion handler when done. Pass it nil on success, and an NSError on failure.
         invocation.buffer.lines.add("Hello extension!")
         
+        let standardOutput = Pipe()
+        let standardError = Pipe()
         
+        let task = Process()
+        task.standardOutput = standardOutput
+        task.standardError = standardError
+        task.launch()
         
         completionHandler(nil)
     }
