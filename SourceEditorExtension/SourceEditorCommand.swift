@@ -12,7 +12,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
         // Implement your command here, invoking the completion handler when done. Pass it nil on success, and an NSError on failure.
-        try! execute("pos", with: ["--version"], in: NSTemporaryDirectory())
+        try! execute("pod", with: ["--version"], in: NSTemporaryDirectory())
         
         completionHandler(nil)
     }
