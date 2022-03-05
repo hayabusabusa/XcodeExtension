@@ -16,7 +16,7 @@ final class CommandHelper: NSObject, CommandHelperProtocol {
         
         let task = Process()
         task.launchPath = "/usr/bin/env"
-        task.arguments = ["/usr/local/bin/\(command)"]
+        task.arguments = ["/usr/local/bin/\(command)"] + arguments
         task.currentDirectoryPath = directory
         task.standardOutput = standardOutput
         task.standardError = standardError

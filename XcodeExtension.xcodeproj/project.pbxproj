@@ -12,6 +12,7 @@
 		A558451727D3546300703628 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A558451627D3546300703628 /* main.m */; };
 		A558451B27D3546300703628 /* CommandHelper.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = A558451027D3546300703628 /* CommandHelper.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A558452227D3548700703628 /* CommandHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A558452127D3548700703628 /* CommandHelper.swift */; };
+		A558452627D35A9C00703628 /* RunXcodeGenCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A558452527D35A9C00703628 /* RunXcodeGenCommand.swift */; };
 		A5EB59F827D1C05E00FC6F67 /* XcodeExtensionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EB59F727D1C05E00FC6F67 /* XcodeExtensionApp.swift */; };
 		A5EB59FA27D1C05E00FC6F67 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EB59F927D1C05E00FC6F67 /* ContentView.swift */; };
 		A5EB59FC27D1C05F00FC6F67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5EB59FB27D1C05F00FC6F67 /* Assets.xcassets */; };
@@ -82,6 +83,8 @@
 		A558451827D3546300703628 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A558452027D3548700703628 /* CommandHelper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CommandHelper-Bridging-Header.h"; sourceTree = "<group>"; };
 		A558452127D3548700703628 /* CommandHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandHelper.swift; sourceTree = "<group>"; };
+		A558452527D35A9C00703628 /* RunXcodeGenCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunXcodeGenCommand.swift; sourceTree = "<group>"; };
+		A558452727D35BC100703628 /* SourceEditorExtension-Briding-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SourceEditorExtension-Briding-Header.h"; sourceTree = "<group>"; };
 		A5EB59F427D1C05E00FC6F67 /* XcodeExtension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XcodeExtension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5EB59F727D1C05E00FC6F67 /* XcodeExtensionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeExtensionApp.swift; sourceTree = "<group>"; };
 		A5EB59F927D1C05E00FC6F67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -190,11 +193,13 @@
 		A5EB5A3027D1C0D400FC6F67 /* SourceEditorExtension */ = {
 			isa = PBXGroup;
 			children = (
+				A558452527D35A9C00703628 /* RunXcodeGenCommand.swift */,
 				A5EB5A3127D1C0D400FC6F67 /* SourceEditorExtension.swift */,
 				A5EB5A3327D1C0D400FC6F67 /* SourceEditorCommand.swift */,
 				A5EB5A3527D1C0D400FC6F67 /* Info.plist */,
 				A5EB5A3E27D1C71400FC6F67 /* SourceEditorExtensionDebug.entitlements */,
 				A5EB5A3627D1C0D400FC6F67 /* SourceEditorExtension.entitlements */,
+				A558452727D35BC100703628 /* SourceEditorExtension-Briding-Header.h */,
 			);
 			path = SourceEditorExtension;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A558452627D35A9C00703628 /* RunXcodeGenCommand.swift in Sources */,
 				A5EB5A3227D1C0D400FC6F67 /* SourceEditorExtension.swift in Sources */,
 				A5EB5A3427D1C0D400FC6F67 /* SourceEditorCommand.swift in Sources */,
 			);
@@ -619,6 +625,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SourceEditorExtension/SourceEditorExtension-Briding-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -647,6 +654,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SourceEditorExtension/SourceEditorExtension-Briding-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
