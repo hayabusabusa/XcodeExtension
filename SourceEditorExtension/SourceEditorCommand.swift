@@ -10,11 +10,27 @@ import XcodeKit
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
-    func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
-        // Implement your command here, invoking the completion handler when done. Pass it nil on success, and an NSError on failure.
+    func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void) -> Void {
+        try! project()
         try! execute("pod", with: ["--version"], in: NSTemporaryDirectory())
         
         completionHandler(nil)
+    }
+    
+    private func project() throws {
+        let connection = NSXPCConnection(serviceName: "jp.co.shunya.yamada.XcodeExtension.XcodeHelper")
+        connection.remoteObjectInterface = NSXPCInterface(with: XcodeHelperProtocol.self)
+        connection.resume()
+        
+        guard let xpc = connection.remoteObjectProxy as? XcodeHelperProtocol else {
+            print("Failed to connect: \(connection)")
+            return
+        }
+        
+        xpc.project { path in
+            print("🛠 [DEBUG] Xcode \(path)")
+            connection.invalidate()
+        }
     }
     
     private func execute(_ command: String, with arguments: [String], in directory: String) throws {
